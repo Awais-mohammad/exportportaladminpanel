@@ -1,0 +1,32 @@
+<ion-content>
+  <div style="position: relative;top: 30%;padding: 5%;">
+
+    <ion-title style="text-align: center;font-size: 2em;font-family: title;font-weight: bold;">
+      CONTACT FORM DATA
+    </ion-title>
+    <div style="overflow-x: auto;">
+      <table style="position: relative;" *ngIf="data">
+        <thead>
+          <tr style="background: black;color: white;">
+            <th>Sender Email</th>
+            <th>Sender Name</th>
+            <th>Sender Phone</th>
+            <th>Sender WEBSITE</th>
+            <th>Sender MESSAGE</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of data">
+            <td>{{item.Df.sn.proto.mapValue.fields.senderEmail.stringValue}}</td>
+            <td>{{item.Df.sn.proto.mapValue.fields.senderName.stringValue}}</td>
+            <td>{{item.Df.sn.proto.mapValue.fields.senderPhone.stringValue}}</td>
+            <td>{{item.Df.sn.proto.mapValue.fields.senderWebsite.stringValue}}</td>
+            <td>{{item.Df.sn.proto.mapValue.fields.senderMessage.stringValue}}</td>
+
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+</ion-content>

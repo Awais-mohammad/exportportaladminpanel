@@ -19,6 +19,10 @@ const routes: Routes = [
     path: 'manage-exporters',
     loadChildren: () => import('./manage-exporters/manage-exporters.module').then( m => m.ManageExportersPageModule)
   },
+  {
+    path: 'contactformrespond',
+    loadChildren: () => import('./contactformrespond/contactformrespond.module').then( m => m.ContactformrespondPageModule)
+  },
 ];
 
 @NgModule({

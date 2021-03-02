@@ -1,8 +1,10 @@
 <ion-content>
 
   <div
-    style="position: relative;top: 15%;display: flex;justify-content: center;align-items: center;text-align: center;">
-
+    style="position: relative;top: 15%;display: flex;justify-content: center;align-items: center;text-align: center;flex-direction: column;">
+    <h1 style="text-align: center;font-family: title;font-weight: bold;">
+      VENDORS
+    </h1>
     <div class="flex wrap">
       <div *ngIf="vendors" class="col">
         <ion-card color="none" style="background:white;width: 300px;display: inline-block;"
@@ -11,17 +13,21 @@
             <div class="card_image">
               <img class="images" src="{{record.imageURL.stringValue}}" />
             </div>
-            <ion-card-header style="text-align: left;background: purple;color: white;">
-              <ion-card-title style="font-family: title;color:white">{{record.name.stringValue}}
+            <ion-card-header style="text-align: left;background: white;">
+              <ion-card-title style="font-family: title;color:black">{{record.name.stringValue}}
               </ion-card-title>
             </ion-card-header>
-            <div style="display: flex;justify-content: space-between;">
-              <ion-item (click)="openProfilePage(record.userID.stringValue)" color="success"
+            <div style="display: flex;">
+            
+
+              <ion-item (click)="approveAccount(record.userID.stringValue)"
+                *ngIf="record.accountstatus.stringValue != 'approved'" color="primary"
                 style="font-family: monospace;text-align: center;" button>
-                View
-                Exporter
+                approve
               </ion-item>
-              <ion-item (click)="openProfilePage(record.userID.stringValue)" color="danger"
+
+
+              <ion-item (click)="addtotop(record.userID.stringValue)" color="danger"
                 style="font-family: monospace;text-align: center;" button>
                 MOVE TO TOP
               </ion-item>
@@ -33,6 +39,121 @@
         </ion-card>
       </div>
     </div>
+
+    <div style="width: 100%;">
+
+
+      <div
+        style="display: flex;justify-content: center;align-items: center;background: white;flex-direction: column;position: relative;top: 5em;">
+        <ion-label style="font-size: 2em;font-weight: bold;font-family: title;text-align: center;">
+          ADD A NEW COMPANY
+        </ion-label>
+
+        <ion-grid>
+          <ion-row>
+            <ion-col offset="0.5" size="11">
+              <ion-card *ngIf="!showLogin" style="color: black;width: 100%;" class="fade-in">
+
+                <ion-card-content
+                  style="display: flex;justify-content: center;align-items: center;flex-direction: column;">
+
+                  <div>
+
+                    <ion-title class="headinone">Create An Account</ion-title>
+
+
+                  </div>
+
+                  <div style=" padding-top: 7px;" class="fields">
+
+                    <ion-row align-items-center>
+                      <ion-col>
+                        <div class="paddtop">
+                          <ion-label style="display: flex;justify-content: flex-start;">Email</ion-label>
+                          <ion-input type='email' [(ngModel)]="email" placeholder='Enter your e-mail'></ion-input>
+                        </div>
+
+                        <div class="paddtop">
+                          <ion-label style="display: flex;justify-content: flex-start;">Company Name</ion-label>
+                          <ion-input type='text' [(ngModel)]="username" placeholder='Enter your company name'>
+                          </ion-input>
+                        </div>
+
+                        <div class="paddtop">
+                          <ion-label style="display: flex;justify-content: flex-start;">Password</ion-label>
+                          <ion-input [(ngModel)]="password" type='password' placeholder='Enter your password'>
+                          </ion-input>
+                        </div>
+
+                        <div class="paddtop">
+                          <ion-label style="display: flex;justify-content: flex-start;">WEBSITE</ion-label>
+                          <ion-input [(ngModel)]="webURL" placeholder='https://'></ion-input>
+                        </div>
+
+                        <div class="paddtop">
+                          <ion-label style="display: flex;justify-content: flex-start;">Company Adress</ion-label>
+                          <ion-input type='text' [(ngModel)]="companyAdress" placeholder='Enter your company name'>
+                          </ion-input>
+                        </div>
+
+                        <div class="paddtop">
+                          <ion-label style="display: flex;justify-content: flex-start;">Phone</ion-label>
+                          <ion-input type='number' [(ngModel)]="companyPhone" placeholder='Enter your password'>
+                          </ion-input>
+                        </div>
+
+
+
+                        <div class="paddtop">
+                          <div *ngIf="categories"
+                            style="display: flex;justify-content: space-between;padding: 0; border: 2px solid rgba(0, 0, 0, 0.415);">
+                            <ion-label style="padding: 1em;">CATEGORY</ion-label>
+                            <ion-select mode='ios' [(ngModel)]="selectedcat" (ionChange)="choosecat(selectedcat)">
+                              <ion-select-option *ngFor="let item of categories.cats.arrayValue.values"
+                                value="{{item.stringValue}}">
+
+                                {{item.stringValue}}
+                              </ion-select-option>
+                            </ion-select>
+                          </div>
+                        </div>
+                        <div *ngIf="cates" style="display: flex;flex-direction: column;width: 50%;">
+                          <ion-chip *ngFor="let item of cates let i=index">{{item}}
+                            <ion-icon (click)="delete(i)" color="danger" name="close-outline"></ion-icon>
+                          </ion-chip>
+                        </div>
+
+
+                        <div class="paddtop">
+                          <div [innerHtml]='msg'></div>
+                          <label>
+                            <input type="file" (change)="selectFile($event)">
+                          </label>
+                        </div>
+
+                      </ion-col>
+                    </ion-row>
+
+                    <div class="paddtop">
+                      <ion-button (click)="register()" style=" max-width: 50vh;" color="dark" expand='block'>
+                        <p>CREATE ACCOUNT</p>
+                      </ion-button>
+
+                    </div>
+
+
+                  </div>
+
+                </ion-card-content>
+
+
+              </ion-card>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+    </div>
+
   </div>
 
 </ion-content>

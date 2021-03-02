@@ -5,77 +5,173 @@
             <ul class="cards">
                 <li class="cards_item">
                     <div class="card">
-                        <div class="card_image"><img src="https://picsum.photos/500/300/?image=10"></div>
+                        <div class="card_image"><img src="../../assets/cardimage.jpg"></div>
                         <div class="card_content">
                             <h2 class="card_title">TO DO</h2>
-                            <p class="card_text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus
-                                ratione aspernatur obcaecati odio doloremque voluptatum quas repudiandae architecto
-                                doloribus voluptatem?AWASI</p>
-                            <button class="btn card_btn">ADD EXPORTERS</button>
+                            <p class="card_text">
+                                ADD NEW ADMIN'S TO DIVIDE WORK LOAD
+                            </p>
+                            <button (click)="addvendor()" class="btn card_btn">ADD ADMIN</button>
                         </div>
                     </div>
                 </li>
+
                 <li class="cards_item">
                     <div class="card">
-                        <div class="card_image"><img src="https://picsum.photos/500/300/?image=5"></div>
+                        <div class="card_image"><img src="../../assets/cardimage.jpg"></div>
                         <div class="card_content">
                             <h2 class="card_title">TO DO</h2>
-                            <p class="card_text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus
-                                ratione aspernatur obcaecati odio doloremque voluptatum quas repudiandae architecto
-                                doloribus voluptatem?AWASI</p>
-                            <button class="btn card_btn">VIEW EXPORTERS</button>
+                            <p class="card_text">
+                                MANAGE EXPORTERS
+                            </p>
+                            <button (click)="gotopage('manage-exporters')" class="btn card_btn">MANAGE</button>
                         </div>
                     </div>
                 </li>
+
                 <li class="cards_item">
                     <div class="card">
-                        <div class="card_image"><img src="https://picsum.photos/500/300/?image=11"></div>
+                        <div class="card_image"><img src="../../assets/cardimage.jpg"></div>
                         <div class="card_content">
                             <h2 class="card_title">TO DO</h2>
-                            <p class="card_text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus
-                                ratione aspernatur obcaecati odio doloremque voluptatum quas repudiandae architecto
-                                doloribus voluptatem?AWASI</p>
-                            <button class="btn card_btn">VIEW UNAPPROVED ACCOUNTS</button>
+                            <p class="card_text">
+                                VIEW PEOPLE WHO CONTACTED
+                            </p>
+                            <button (click)="gotopage('contactformrespond')" class="btn card_btn">VIEW</button>
                         </div>
                     </div>
                 </li>
-                <li class="cards_item">
-                    <div class="card">
-                        <div class="card_image"><img src="https://picsum.photos/500/300/?image=14"></div>
-                        <div class="card_content">
-                            <h2 class="card_title">TO DO</h2>
-                            <p class="card_text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus
-                                ratione aspernatur obcaecati odio doloremque voluptatum quas repudiandae architecto
-                                doloribus voluptatem?AWASI</p>
-                            <button class="btn card_btn">NIAZI OR KIYA YAG</button>
-                        </div>
-                    </div>
-                </li>
-                <li class="cards_item">
-                    <div class="card">
-                        <div class="card_image"><img src="https://picsum.photos/500/300/?image=17"></div>
-                        <div class="card_content">
-                            <h2 class="card_title">TO DO</h2>
-                            <p class="card_text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus
-                                ratione aspernatur obcaecati odio doloremque voluptatum quas repudiandae architecto
-                                doloribus voluptatem?AWASI</p>
-                            <button class="btn card_btn">KUCH ORRR</button>
-                        </div>
-                    </div>
-                </li>
-                <li class="cards_item">
-                    <div class="card">
-                        <div class="card_image"><img src="https://picsum.photos/500/300/?image=2"></div>
-                        <div class="card_content">
-                            <h2 class="card_title">TO DO</h2>
-                            <p class="card_text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus
-                                ratione aspernatur obcaecati odio doloremque voluptatum quas repudiandae architecto
-                                doloribus voluptatem?AWASI</p>
-                            <button class="btn card_btn">KUCH ORRR</button>
-                        </div>
-                    </div>
-                </li>
+
+
             </ul>
         </div>
+    </div>
+
+    <div *ngIf="width > 600 && createvendor"
+        style="position: fixed;top: 14%;left: 25%;height: 80%;width: 50%;background: white;">
+        <ion-card style="color: black;width: 100%;" class="fade-in">
+
+            <ion-card-content>
+
+                <div>
+
+                    <ion-title style="text-align: center;" class="headinone">Create ADMIN</ion-title>
+                    <ion-label style="text-align: center;" (click)="addvendor()" class="highlight"> NOT NOW?</ion-label>
+
+                </div>
+
+                <div style=" padding-top: 7px;" class="fields">
+
+                    <ion-row align-items-center>
+                        <ion-col>
+                            <div class="paddtop">
+                                <ion-label style="display: flex;justify-content: flex-start;">Email</ion-label>
+                                <ion-input type='email' [(ngModel)]="email" placeholder='Enter  e-mail'></ion-input>
+                            </div>
+
+                            <div class="paddtop">
+                                <ion-label style="display: flex;justify-content: flex-start;"> Name</ion-label>
+                                <ion-input type='text' [(ngModel)]="name" placeholder='Enter  name'>
+                                </ion-input>
+                            </div>
+
+                            <div class="paddtop">
+                                <ion-label style="display: flex;justify-content: flex-start;">Password</ion-label>
+                                <ion-input [(ngModel)]="password" type='password' placeholder='Enter  password'>
+                                </ion-input>
+                            </div>
+
+
+
+                            <div class="paddtop">
+                                <ion-label style="display: flex;justify-content: flex-start;">Phone</ion-label>
+                                <ion-input type='number' [(ngModel)]="phone" placeholder='Enter  password'>
+                                </ion-input>
+                            </div>
+
+
+
+
+                        </ion-col>
+                    </ion-row>
+
+                    <div class="paddtop">
+                        <ion-button (click)="create()" style=" max-width: 50vh;" color="dark" expand='block'>
+                            <p>CREATE ACCOUNT</p>
+                        </ion-button>
+
+                    </div>
+
+
+                </div>
+
+            </ion-card-content>
+
+
+        </ion-card>
+    </div>
+
+    <div *ngIf="width < 600 && createvendor"
+        style="position: fixed;top: 14%;height: 80%;width: 100%;background: white;">
+        <ion-card style="color: black;width: 100%;" class="fade-in">
+
+            <ion-card-content>
+
+                <div>
+
+                    <ion-title style="text-align: center;" class="headinone">Create ADMIN</ion-title>
+
+
+                </div>
+
+                <div style=" padding-top: 7px;" class="fields">
+
+                    <ion-row align-items-center>
+                        <ion-col>
+                            <div class="paddtop">
+                                <ion-label style="display: flex;justify-content: flex-start;">Email</ion-label>
+                                <ion-input type='email' [(ngModel)]="email" placeholder='Enter  e-mail'></ion-input>
+                            </div>
+
+                            <div class="paddtop">
+                                <ion-label style="display: flex;justify-content: flex-start;"> Name</ion-label>
+                                <ion-input type='text' [(ngModel)]="name" placeholder='Enter  company name'>
+                                </ion-input>
+                            </div>
+
+                            <div class="paddtop">
+                                <ion-label style="display: flex;justify-content: flex-start;">Password</ion-label>
+                                <ion-input [(ngModel)]="password" type='password' placeholder='Enter  password'>
+                                </ion-input>
+                            </div>
+
+
+
+                            <div class="paddtop">
+                                <ion-label style="display: flex;justify-content: flex-start;">Phone</ion-label>
+                                <ion-input type='number' [(ngModel)]="phone" placeholder='Enter  password'>
+                                </ion-input>
+                            </div>
+
+
+
+
+                        </ion-col>
+                    </ion-row>
+
+                    <div class="paddtop">
+                        <ion-button (click)="create()" style=" max-width: 50vh;" color="dark" expand='block'>
+                            <p>CREATE ACCOUNT</p>
+                        </ion-button>
+
+                    </div>
+
+
+                </div>
+
+            </ion-card-content>
+
+
+        </ion-card>
     </div>
 </ion-content>

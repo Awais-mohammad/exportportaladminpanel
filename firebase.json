@@ -1,7 +1,7 @@
 {
   "hosting": {
-    "public": "www",
     "site": "adminpanel-f52ca",
+    "public": "www",
     "ignore": [
       "firebase.json",
       "**/.*",

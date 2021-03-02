@@ -1,8 +1,10 @@
-
+import { AngularFirestore } from '@angular/fire/firestore';
 import { Component, OnInit, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
 import { IonContent } from '@ionic/angular';
 import { MenuController } from '@ionic/angular';
+import { AngularFireAuth } from 'angularfire2/auth';
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -12,6 +14,8 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     private router: Router,
+    private firestore: AngularFirestore,
+    private firebaseauth: AngularFireAuth,
 
   ) { }
 
@@ -23,7 +27,7 @@ export class HeaderComponent implements OnInit {
   email: string;
   password: string;
   currentUserID: string;
-
+  pages: any[] = ['home', 'manage-exporters', 'contactformrespond'];
   @HostListener('window:resize', ['$event'])
   onResize(event) {
     this.width = window.innerWidth;
@@ -34,16 +38,35 @@ export class HeaderComponent implements OnInit {
     }, 100)
   }
 
- goToPage(path: string) {
+  goToPage(path: string) {
     this.router.navigate([path]).then(() => {
       this.activePath = this.router.url.slice(1, this.router.url.length);
       console.log(this.activePath);
     });
   }
+  currentUID: string;
+  userdata: any;
 
+  getuser() {
+    const authsub = this.firebaseauth.authState.subscribe(cuser => {
+      this.currentUID = cuser.uid
+
+      this.firestore.collection('admins').doc(this.currentUID).get().subscribe(res => {
+        this.userdata = res
+        console.log(this.userdata);
+
+      })
+    })
+  }
+
+  logOut() {
+    this.firebaseauth.auth.signOut()
+    this.goToPage('authentication')
+  }
 
   ngOnInit() {
     this.checkRoute();
+    this.getuser()
   }
 
 }
