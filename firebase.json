@@ -1,0 +1,17 @@
+{
+  "hosting": {
+    "public": "www",
+    "site": "adminpanel-f52ca",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}

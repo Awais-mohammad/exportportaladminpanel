@@ -1,0 +1,29 @@
+.flex {
+    display: flex;
+  }
+  .no-wrap {
+    flex-wrap: no-wrap;
+  }
+  .wrap {
+    flex-wrap: wrap;
+  }
+  .col {
+    flex-basis: 200px;
+    flex-shrink: 1;
+    flex-grow: 1;
+  }
+  
+  
+  .card .card_image {
+    width: inherit;
+    height: inherit;
+    border-radius: 40px;
+}
+
+.images {
+    padding-top: 20px;
+    height: 10em;
+    object-fit: contain;
+    width: 100%;
+}
+  

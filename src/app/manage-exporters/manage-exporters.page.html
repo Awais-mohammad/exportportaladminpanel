@@ -1,0 +1,38 @@
+<ion-content>
+
+  <div
+    style="position: relative;top: 15%;display: flex;justify-content: center;align-items: center;text-align: center;">
+
+    <div class="flex wrap">
+      <div *ngIf="vendors" class="col">
+        <ion-card color="none" style="background:white;width: 300px;display: inline-block;"
+          *ngFor="let record of vendors">
+          <div>
+            <div class="card_image">
+              <img class="images" src="{{record.imageURL.stringValue}}" />
+            </div>
+            <ion-card-header style="text-align: left;background: purple;color: white;">
+              <ion-card-title style="font-family: title;color:white">{{record.name.stringValue}}
+              </ion-card-title>
+            </ion-card-header>
+            <div style="display: flex;justify-content: space-between;">
+              <ion-item (click)="openProfilePage(record.userID.stringValue)" color="success"
+                style="font-family: monospace;text-align: center;" button>
+                View
+                Exporter
+              </ion-item>
+              <ion-item (click)="openProfilePage(record.userID.stringValue)" color="danger"
+                style="font-family: monospace;text-align: center;" button>
+                MOVE TO TOP
+              </ion-item>
+            </div>
+
+          </div>
+
+
+        </ion-card>
+      </div>
+    </div>
+  </div>
+
+</ion-content>
